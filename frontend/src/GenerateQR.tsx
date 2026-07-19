@@ -1,4 +1,5 @@
 import { useState, useEffect, type FormEvent } from 'react';
+import { generateQrCode } from './api';
 
 interface GenerateQRProps {
   onSubmit: (url: string) => void;
@@ -21,11 +22,7 @@ export default function GenerateQR({ onSubmit }: GenerateQRProps) {
     setQrDataUrl(null);
 
     try {
-      const response = await fetch(`http://localhost:8080/api/qrcode?url=${encodeURIComponent(url.trim())}`);
-      if (!response.ok) throw new Error('Failed to generate QR code');
-
-      const blob = await response.blob();
-      const dataUrl = URL.createObjectURL(blob);
+      const dataUrl = await generateQrCode(url.trim());
       setQrCode(dataUrl);
       setQrDataUrl(dataUrl);
       onSubmit(url.trim());

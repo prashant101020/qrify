@@ -1,13 +1,14 @@
 const getApiBaseUrl = () => {
-  // In development with Vite proxy, use relative URLs
-  if (import.meta.env.DEV) {
-    return '';
+  // In production, use the backend URL from env var
+  if (import.meta.env.VITE_API_BASE_URL) {
+    return import.meta.env.VITE_API_BASE_URL;
   }
-  // In production, use same origin
+  // In development with Vite proxy, use relative URLs
   return '';
 };
 
 const API_BASE_URL = getApiBaseUrl();
+
 
 interface ShortenUrlResponse {
   shortUrl: string;
