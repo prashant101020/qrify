@@ -1,0 +1,25 @@
+# IDE files
+.idea/
+*.iml
+*.iws
+
+# Build artifacts
+target/
+dist/
+build/
+
+# Dependency directories
+node_modules/
+
+# Log files
+*.log
+logs/
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# OS-specific files
+.DS_Store
+Thumbs.db
